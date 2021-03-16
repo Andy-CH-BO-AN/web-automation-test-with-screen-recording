@@ -1,11 +1,10 @@
 import os
 import time
-
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 
 
-def open_browser(url):
+def open_browser():
     # 跳過驅動器
     chrome_path = ChromeDriverManager().install()
     options = webdriver.ChromeOptions()
@@ -37,5 +36,5 @@ def open_browser(url):
 
 if __name__ == '__main__':
     url = 'https://www.google.com/'
-    open_browser(url)
+    open_browser()
     os.system(r'taskkill /f /im python.exe')
