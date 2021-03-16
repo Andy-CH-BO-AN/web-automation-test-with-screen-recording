@@ -1,13 +1,15 @@
 import os
 import threading
+import screen_record
+import open_browser
 
 
 def run_screen_record():
-    os.system('python screen_record.py')
+    screen_record.screen_record()
 
 
 def run_open_browser():
-    os.system('python open_browser.py')
+    open_browser.open_browser()
 
 
 thread = [threading.Thread(target=run_screen_record), threading.Thread(target=run_open_browser)]

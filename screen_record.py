@@ -14,7 +14,3 @@ def screen_record():
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         out.write(frame)
         # cv2.imshow('show',frame)
-
-
-if __name__ == '__main__':
-    screen_record()

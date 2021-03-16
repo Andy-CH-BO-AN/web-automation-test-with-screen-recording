@@ -3,6 +3,8 @@ import time
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 
+url = 'https://www.google.com/'
+
 
 def open_browser():
     # 跳過驅動器
@@ -32,9 +34,4 @@ def open_browser():
     driver.get(url)
     time.sleep(5)
     driver.quit()
-
-
-if __name__ == '__main__':
-    url = 'https://www.google.com/'
-    open_browser()
     os.system(r'taskkill /f /im python.exe')
