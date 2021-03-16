@@ -1,4 +1,3 @@
-import os
 import threading
 import screen_record
 import open_browser
