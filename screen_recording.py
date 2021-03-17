@@ -6,6 +6,7 @@ import os
 import time
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from PIL import ImageGrab
 
 url = 'https://www.google.com/'
 
@@ -42,7 +43,9 @@ def open_browser():
 
 
 def screen_record():
-    screen_size = (1920, 1080)
+    cur_screen_resolution = ImageGrab.grab()  # 獲取屏幕對象
+    height, width = cur_screen_resolution.size
+    screen_size = (height, width)
     fourcc = cv2.VideoWriter_fourcc(*"XVID")
     out = cv2.VideoWriter("output.avi", fourcc, 20.0, (screen_size))
 
@@ -52,23 +55,18 @@ def screen_record():
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         out.write(frame)
         # cv2.imshow('show',frame)
-
-
-def run_screen_record():
-    screen_record()
-
-
-def run_open_browser():
-    open_browser()
+        if stop:
+            break
 
 
 def shut_down_python():
-    os.system(r'taskkill /f /im python.exe')
+    global stop
+    stop = True
 
 
-thread = [threading.Thread(target=run_screen_record), threading.Thread(target=run_open_browser)]
+thread = [threading.Thread(target=screen_record), threading.Thread(target=open_browser)]
 
 if __name__ == '__main__':
-
+    stop = False
     for t in thread:
         t.start()
