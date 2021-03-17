@@ -38,7 +38,7 @@ def open_browser():
     driver.get(url)
     time.sleep(5)
     driver.quit()
-    os.system(r'taskkill /f /im python.exe')
+    shut_down_python()
 
 
 def screen_record():
@@ -60,6 +60,10 @@ def run_screen_record():
 
 def run_open_browser():
     open_browser()
+
+
+def shut_down_python():
+    os.system(r'taskkill /f /im python.exe')
 
 
 thread = [threading.Thread(target=run_screen_record), threading.Thread(target=run_open_browser)]
