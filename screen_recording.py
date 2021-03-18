@@ -9,6 +9,9 @@ from selenium import webdriver
 from PIL import ImageGrab
 
 url = 'https://www.google.com/'
+cur_screen_resolution = ImageGrab.grab()  # 獲取屏幕對象
+height, width = cur_screen_resolution.size
+screen_size = (height, width)
 
 
 def open_browser():
@@ -24,7 +27,7 @@ def open_browser():
     }
     options.add_experimental_option('prefs', prefs)
     # 設定瀏覽器分辨率(配合無頭模式)
-    options.add_argument('window-size=1920x1080')
+    options.add_argument(f'window-size={height}x{width}')
     # 開啟無頭模式(自行決定是否啟動)
     # options.add_argument('--headless')
     # 去除自動化控制提示
@@ -43,11 +46,8 @@ def open_browser():
 
 
 def screen_record():
-    cur_screen_resolution = ImageGrab.grab()  # 獲取屏幕對象
-    height, width = cur_screen_resolution.size
-    screen_size = (height, width)
     fourcc = cv2.VideoWriter_fourcc(*"XVID")
-    out = cv2.VideoWriter("output.avi", fourcc, 20.0, (screen_size))
+    out = cv2.VideoWriter("output.avi", fourcc, 20.0, screen_size)
 
     while True:
         img = pyautogui.screenshot()
