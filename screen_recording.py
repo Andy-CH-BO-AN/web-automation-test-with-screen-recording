@@ -7,7 +7,7 @@ import time
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from PIL import ImageGrab
-
+# etet
 url = 'https://www.google.com/'
 cur_screen_resolution = ImageGrab.grab()  # 獲取屏幕對象
 height, width = cur_screen_resolution.size
