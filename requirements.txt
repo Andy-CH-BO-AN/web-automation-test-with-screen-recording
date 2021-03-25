@@ -1,7 +1,7 @@
 certifi==2020.12.5
 chardet==4.0.0
 colorama==0.4.4
-configparser==5.0.2
+configparser
 crayons==0.4.0
 idna==2.10
 MouseInfo==0.1.3
@@ -17,5 +17,5 @@ PyScreeze==0.1.26
 PyTweening==1.0.3
 requests==2.25.1
 selenium==3.141.0
-urllib3==1.26.4
+urllib3
 webdriver-manager==3.3.0
